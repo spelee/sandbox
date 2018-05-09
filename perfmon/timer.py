@@ -34,10 +34,12 @@ def bestof(reps, func, *pargs, **kargs):
     """
 
     best = 2 ** 32  #136 years
+    print("Best of {} {} {}".format(func.__name__, pargs, kargs))
     for i in range(reps): # not changing to list b/c range usage not timed here
         start = timer()
         ret = func(*pargs, **kargs)
         elapsed = timer() - start
+        print("--> elapsed({}): {}".format(i, elapsed))
         if elapsed < best:
             best = elapsed
         return (best, ret)
